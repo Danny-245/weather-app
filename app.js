@@ -20,19 +20,16 @@ async function checkWeather(city) {
         document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
         if (data.weather[0].main == "Clouds") {
             document.querySelector(".weather-con").innerHTML = "Clouds";
-            weatherIcon.src = "img/Assets/cloud.png";
+            weatherIcon.src = "img/Assets/weather/clouds.svg";
         } else if (data.weather[0].main == "Clear") {
             document.querySelector(".weather-con").innerHTML = "Clear";
-            weatherIcon.src = "img/Assets/clear.png";
+            weatherIcon.src = "img/Assets/weather/clear.svg";
         } else if (data.weather[0].main == "Rain") {
             document.querySelector(".weather-con").innerHTML = "Rain";
-            weatherIcon.src = "img/Assets/rain.png";
+            weatherIcon.src = "img/Assets/weather/rain.svg";
         } else if (data.weather[0].main == "Drizzle") {
             document.querySelector(".weather-con").innerHTML = "Drizzle";
-            weatherIcon.src = "img/Assets/drizzle.png"
-        } else if (data.weather[0].main == "Mist") {
-            document.querySelector(".weather-con").innerHTML = "Mist";
-            weatherIcon.src = "img/Assets/mist.png";
+            weatherIcon.src = "img/Assets/weather/drizzle.svg"
         }
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
@@ -58,7 +55,7 @@ const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 let leadingDate = 0;
 if (dateNum < 10) {
     leadingDate = "0" + dateNum;
-}else {
+} else {
     leadingDate = dateNum;
 }
 console.log(leadingDate);

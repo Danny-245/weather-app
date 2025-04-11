@@ -78,7 +78,7 @@ body::before {
 }
 
 .container .search button img {
-    width: 16px;
+    width: 15px;
 }
 
 .weather {
@@ -172,4 +172,31 @@ body::before {
 .current-date {
     text-align: end;
     margin-right: 10px;
+}
+@media (max-width: 400px) {
+    .container .search input  {
+        font-size: 14px;
+    }
+    .container .search button {
+        width: 42px;
+        height: 42px;
+    }
+    .humidity,
+.wind {
+    font-size: 15px;
+}
+.details {
+    display: block;
+    background: unset;
+}
+.details .col {
+    color: var(--primary-color);
+    padding: 15px 30px;
+    border-radius: 15px;
+    margin: 10px auto 0;
+    background: rgba(255, 255, 255, 0.1);
+    /* light frosted glass look */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
 }

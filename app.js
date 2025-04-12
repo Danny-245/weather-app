@@ -7,6 +7,7 @@ let weatherIcon = document.querySelector(".weather-icon");
 async function checkWeather(city) {
     const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
     if (response.status == 404) {
+        document.querySelector(".search-city").style.display = "none";
         document.querySelector(".error").style.display = "block";
         document.querySelector(".weather").style.display = "none";
     } else {
@@ -18,21 +19,32 @@ async function checkWeather(city) {
         document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + '°';
         document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
         document.querySelector(".wind").innerHTML = data.wind.speed + " km/h";
-        if (data.weather[0].main == "Clouds") {
+        if (data.weather[0].id >= 801 && data.weather[0].id <= 804) {
             document.querySelector(".weather-con").innerHTML = "Clouds";
             weatherIcon.src = "img/Assets/weather/clouds.svg";
-        } else if (data.weather[0].main == "Clear") {
+        } else if (data.weather[0].id === 800) {
             document.querySelector(".weather-con").innerHTML = "Clear";
             weatherIcon.src = "img/Assets/weather/clear.svg";
-        } else if (data.weather[0].main == "Rain") {
+        } else if (data.weather[0].id >= 500 && data.weather[0].id <= 531) {
             document.querySelector(".weather-con").innerHTML = "Rain";
             weatherIcon.src = "img/Assets/weather/rain.svg";
-        } else if (data.weather[0].main == "Drizzle") {
+        } else if (data.weather[0].id >= 300 && data.weather[0].id <= 321) {
             document.querySelector(".weather-con").innerHTML = "Drizzle";
-            weatherIcon.src = "img/Assets/weather/drizzle.svg"
+            weatherIcon.src = "img/Assets/weather/drizzle.svg";
+        }
+        else if (data.weather[0].id >= 600 && data.weather[0].id <= 622) {
+            document.querySelector(".weather-con").innerHTML = "Snow";
+            weatherIcon.src = "img/Assets/weather/snow.svg";
+        } else if (data.weather[0].id >= 200 && data.weather[0].id <= 300) {
+            document.querySelector(".weather-con").innerHTML = "Thunderstorm";
+            weatherIcon.src = "img/Assets/weather/thunderstorm.svg";
+        } else if (data.weather[0].id >= 700 && data.weather[0].id <= 781) {
+            document.querySelector(".weather-con").innerHTML = "Mist";
+            weatherIcon.src = "img/Assets/weather/atmosphere.svg";
         }
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
+        document.querySelector(".search-city").style.display = "none";
     }
 
 }
